@@ -7,3 +7,40 @@ eureka:
   instance:
     hostname: localhost
 
+info:
+  app:
+    name: "This is review service"
+    version: "1.0.0"
+    description: "This task service manages review!"
+
+management:
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace,ping
+          show-components: always
+          show-details: always
+          status:
+            http-mapping:
+              up: 207
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+  metrics:
+    enable:
+      jvm.memory:
+        used: true
+      http.server.request:
+        user: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
